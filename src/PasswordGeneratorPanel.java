@@ -86,10 +86,25 @@ public class PasswordGeneratorPanel extends JPanel
 
     public static void main(String[] args) 
     {
-        JFrame frame = new JFrame("PasswordGeneratorPanel");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(new PasswordGeneratorPanel());
-        frame.pack();
-        frame.setVisible(true);
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException ex) {
+                } catch (InstantiationException ex) {
+                } catch (IllegalAccessException ex) {
+                } catch (UnsupportedLookAndFeelException ex) {
+                }
+
+                JFrame frame = new JFrame("PasswordGeneratorPanel");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.getContentPane().add(new PasswordGeneratorPanel());
+                frame.pack();
+                frame.setVisible(true);
+            }
+
+        });
+
     }
 }
